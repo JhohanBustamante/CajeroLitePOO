@@ -11,31 +11,8 @@ namespace CajeroLite.App
         {
             Program app = new Program();
 
-            app.cajero.GuardarUsuario(new Usuario(11, "Kevin", 12234));
-            // app.Registrar(new Usuario(11, "Kevin", "12234"));
-            app.Registrar();
+            app.cajero.Registrar();
             
-        }
-
-        public bool Registrar()
-        {
-            string entrada = utilidades.LeerTexto("Ingrese su id de usuario.");
-            
-            if (!int.TryParse(entrada, out int idUsuario))
-            {
-                Console.WriteLine("Debe ingresar un número válido.");
-                return false;
-            }
-
-            if (cajero.ValidarUsuario(idUsuario))
-            {
-                Console.WriteLine("No se puede registrar");
-                return false;
-            }
-            Console.WriteLine("Se puede registrar");
-            //cajero.GuardarUsuario(Usuario usuario);
-            return true;
-        }
-         
+        }         
     }
 }

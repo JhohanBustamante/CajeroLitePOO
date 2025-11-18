@@ -9,14 +9,9 @@ namespace CajeroLitePOO
 {
     internal class Utilidades
     {
-        public string EntradaUsuario(string mensaje)
+        public void Pausar(string texto)
         {
-            Console.Write(mensaje);
-            return Console.ReadLine() ?? "";
-        }
-        public void Pausar()
-        {
-            Console.WriteLine("\nPresione una tecla para continuar...");
+            Console.WriteLine($"{texto}\n");
             Console.ReadKey(true);
         }
 
@@ -26,8 +21,6 @@ namespace CajeroLitePOO
             return Console.ReadLine() ?? "";
         }
 
-
-
-
+        
     }
 }

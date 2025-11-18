@@ -12,6 +12,7 @@ namespace CajeroLitePOO
         private int id { get; set; } //declarativo
         private string nombre { get; set; }
         private int pin { get; set; }
+        private static int contador = 0;
 
         public int GetId()
         {
@@ -22,9 +23,15 @@ namespace CajeroLitePOO
             return pin;
         }
 
-        public Usuario(int id, string nombre, int pin)
+        public string GetNombre()
         {
-            this.id = id;
+            return nombre;
+        }
+
+        public Usuario(string nombre, int pin)
+        {   
+            contador++;
+            this.id = contador;
             this.nombre = nombre;
             this.pin = pin;
         }
