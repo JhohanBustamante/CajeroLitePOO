@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace CajeroLitePOO
 {
-    internal class Validaciones : Utilidades
+    internal class RegistroUtilidades : Utilidades
     {
 
-        public string ValidarTexto(string variable, int min, int max)
+        public override string ValidarTexto(string variable, int min, int max)
         {
             string entrada;
             bool esValido;
-            entrada = LeerTexto("Ingrese su " + variable + ": ");
             do
             {
+                entrada = LeerTexto("Ingrese su " + variable + ": ");
                 esValido = true;
                 if (entrada.Trim().Length < min || entrada.Trim().Length > max || entrada.Contains(' '))
                 {
@@ -27,24 +27,23 @@ namespace CajeroLitePOO
                 if (int.TryParse(entrada, out _))
                 {
                     esValido = false;
-                    Console.WriteLine(variable + " no puede ser solo números, prueba de nuevo: ");
+                    Console.WriteLine(variable + " no puede ser solo números. ");
                     Pausar("Oprime alguna tecla para intentar de nuevo...");
                     continue;
                 }
             }
             while (!esValido);
-            return entrada.Trim();
+            return entrada.Trim().ToLower();
         }
-        public virtual int ValidarNumero(string variable, int digitos)
+        public string ValidarPin(string variable, int digitos)
         {
             string entrada;
             bool esValido;
-            int numero;
-            entrada = LeerTexto("Ingrese su " + variable + ": ");
-            int.TryParse(entrada, out numero);
 
             do
             {
+                entrada = LeerTexto("Ingrese su " + variable + ": ");
+                int.TryParse(entrada, out _);
                 esValido = true;
                 if (entrada.Trim().Length != 4 || entrada.Contains(' '))
                 {
@@ -56,13 +55,22 @@ namespace CajeroLitePOO
                 if (!int.TryParse(entrada, out _))
                 {
                     esValido = false;
-                    Console.WriteLine(variable + " debe tener solo números, prueba de nuevo: ");
+                    Console.WriteLine(variable + " debe tener solo números.");
+                    Pausar("Oprime alguna tecla para intentar de nuevo...");
+                    continue;
+                }
+                string entradaValidacion = LeerTexto("Ingresa nuevamente su " + variable + ": ");
+                int.TryParse(entradaValidacion, out _);
+                if (entrada != entradaValidacion)
+                {
+                    esValido = false;
+                    Console.WriteLine("No coinciden.");
                     Pausar("Oprime alguna tecla para intentar de nuevo...");
                     continue;
                 }
             }
             while (!esValido);
-            return numero;
+            return entrada.Trim();
         }
 
     }

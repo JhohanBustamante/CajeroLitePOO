@@ -12,7 +12,8 @@ namespace CajeroLite.App
             Program app = new Program();
 
             app.cajero.Registrar();
-            
+            app.cajero.Registrar();
+
         }         
     }
 }

@@ -10,21 +10,31 @@ namespace CajeroLitePOO
     internal class Cajero
     {
         List<Usuario> ListaUsuarios = new List<Usuario>();
-        private int posicion;
         private Utilidades utilidades = new Utilidades();
-        private Validaciones validaciones = new Validaciones();
+        private RegistroUtilidades validaciones = new RegistroUtilidades();
 
         public bool ExistenciaNombre(string nombre)
         {
-            posicion = ListaUsuarios.FindIndex(usuarioGuardado =>
+            int posicion = ListaUsuarios.FindIndex(usuarioGuardado =>
                 usuarioGuardado.GetNombre() == nombre
             );
-            if (posicion != -1)
+            if (posicion == -1)
             {
-                Console.WriteLine("True, posicion != -1, existe el nombre");
                 return true;
             }
-            Console.WriteLine("False, posicion == -1, no existe el nombre");
+            return false;
+        }
+
+        public bool ExistenciaUsuario(string nombre, string pin)
+        {
+            int posicion = ListaUsuarios.FindIndex(usuarioRegistrado =>
+                usuarioRegistrado.GetNombre() == nombre &&
+                usuarioRegistrado.GetPin() == pin
+                );
+            if (posicion == -1)
+            {
+                return true;
+            }
             return false;
         }
 
@@ -35,38 +45,50 @@ namespace CajeroLitePOO
 
         public bool IniciarSesion()
         {
-            int pin= 0;
-            int id= 0;
-            try
+            string pin = "";
+            string nombre = "";
+            int intentosFallidos = 0; 
+
+            do
             {
-                posicion = ListaUsuarios.FindIndex(usuarioGuardado =>
-                usuarioGuardado.GetPin() == pin &&
-                usuarioGuardado.GetId() == id
-                );
-                if (posicion != -1)
+
+                intentosFallidos++;
+                if (intentosFallidos >=3)
                 {
-                    return true;
+                    Console.WriteLine("Has excedido el número de intentos permitidos. Regresando al menú principal.");
+                    return false;
                 }
-                return false;
-            } catch (Exception error)
-            {
-                Console.WriteLine("Error al iniciar sesión: " + error.Message);
-                return false;
-            }         
+            }
+            while (ExistenciaUsuario(nombre, pin));
+
+            return true;
+                   
         }
 
         public bool Registrar()
         {
-            string nombre;
-            int pin;
+            string nombre = "";
+            string pin = "";
             do
             {
                 nombre = validaciones.ValidarTexto("Nombre de usuario", 4, 10);
+                if(!ExistenciaNombre(nombre))
+                {
+                    Console.WriteLine("El nombre de usuario ya existe, por favor elige otro.");
+                    utilidades.Pausar("Oprime alguna tecla para intentar de nuevo...");
+                    nombre = "";
+                }
             }
-            while (ExistenciaNombre(nombre));
-            pin = validaciones.ValidarNumero("Pin", 4);
-            Console.WriteLine("Registrado");
-            GuardarUsuario(new Usuario(nombre,pin));
+            while (nombre == "");
+
+            do
+            {
+                pin = validaciones.ValidarPin("Pin", 4);
+            }
+            while (pin == "");
+
+
+            GuardarUsuario(new Usuario(nombre, pin));
             utilidades.Pausar("Ya puedes iniciar sesion, oprime una tecla para volver al menú principal...");
             return true;
         }

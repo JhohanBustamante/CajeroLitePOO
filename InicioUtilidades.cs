@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CajeroLitePOO
 {
-    internal class Interfaces : Utilidades
+    internal class InicioUtilidades : Utilidades
     {
     }
 }

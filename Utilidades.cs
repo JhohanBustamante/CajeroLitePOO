@@ -20,7 +20,11 @@ namespace CajeroLitePOO
             Console.Write(mensaje);
             return Console.ReadLine() ?? "";
         }
-
         
+        public virtual string ValidarTexto(string texto, int min, int max)
+        {
+
+            return texto;
+        }
     }
 }
