@@ -26,5 +26,17 @@ namespace CajeroLitePOO
 
             return texto;
         }
+
+        public static decimal LeerDecimal(string mensaje)
+        {
+            decimal valor;
+
+            Console.Write(mensaje);
+            while(!decimal.TryParse(Console.ReadLine(),out valor))
+            {
+                Console.WriteLine("El valor ingrasado es invalido, por favor intente nuevamente.");
+            }
+            return valor;
+        }
     }
 }

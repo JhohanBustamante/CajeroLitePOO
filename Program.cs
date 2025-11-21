@@ -12,7 +12,11 @@ namespace CajeroLite.App
             Program app = new Program();
 
             app.cajero.Registrar();
-            app.cajero.Registrar();
+            /*app.cajero.Registrar();*/
+
+
+            //llamamos al menu de operaciones
+            app.cajero.MostrarMenuOperaciones();
 
         }         
     }

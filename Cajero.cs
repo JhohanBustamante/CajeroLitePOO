@@ -13,6 +13,13 @@ namespace CajeroLitePOO
         private Utilidades utilidades = new Utilidades();
         private RegistroUtilidades validaciones = new RegistroUtilidades();
 
+        private Cuenta cuenta = new Cuenta();
+
+        public Cajero()
+        {
+            cuenta = new Cuenta(0m);
+        }
+
         public bool ExistenciaNombre(string nombre)
         {
             int posicion = ListaUsuarios.FindIndex(usuarioGuardado =>
@@ -47,13 +54,13 @@ namespace CajeroLitePOO
         {
             string pin = "";
             string nombre = "";
-            int intentosFallidos = 0; 
+            int intentosFallidos = 0;
 
             do
             {
 
                 intentosFallidos++;
-                if (intentosFallidos >=3)
+                if (intentosFallidos >= 3)
                 {
                     Console.WriteLine("Has excedido el número de intentos permitidos. Regresando al menú principal.");
                     return false;
@@ -62,7 +69,7 @@ namespace CajeroLitePOO
             while (ExistenciaUsuario(nombre, pin));
 
             return true;
-                   
+
         }
 
         public bool Registrar()
@@ -72,7 +79,7 @@ namespace CajeroLitePOO
             do
             {
                 nombre = validaciones.ValidarTexto("Nombre de usuario", 4, 10);
-                if(!ExistenciaNombre(nombre))
+                if (!ExistenciaNombre(nombre))
                 {
                     Console.WriteLine("El nombre de usuario ya existe, por favor elige otro.");
                     utilidades.Pausar("Oprime alguna tecla para intentar de nuevo...");
@@ -113,6 +120,50 @@ namespace CajeroLitePOO
 
             Console.WriteLine("└─────┴──────────────┴────────┘");
             Console.WriteLine($"Total: {ListaUsuarios.Count} usuarios");
+        }
+
+        public void MostrarMenuOperaciones()
+        {
+
+            bool salir = false;
+
+            while (!salir)
+            {
+                Console.WriteLine("----MENU DE OPERACIONES----");
+                Console.WriteLine("1. VER SALDO");
+                Console.WriteLine("2. RETIRAR");
+                Console.WriteLine("3. DEPORISTAR");
+                Console.WriteLine("4. SALIR");
+
+                string opcion = Console.ReadLine();
+                switch (opcion)
+                {
+                    case "1":
+                        decimal saldo= cuenta.VerSaldo();
+                        Console.WriteLine($"Su saldo actual es de: {saldo}");
+                        utilidades.Pausar("Presione una tecla para continuar.");
+                        break;
+                    case "2":                        
+                        decimal monto=Utilidades.LeerDecimal("Por favor ingrase el monto a retirar: ");
+                        string resultado=cuenta.Retirar(monto);
+                        Console.WriteLine(resultado);
+                        utilidades.Pausar("Presione una tecla para continuar.");
+                        break;
+                    case "3":
+                        decimal monto2=Utilidades.LeerDecimal("Por favor ingrase el monto a depositar: ");
+                        string resultado2 = cuenta.Depositar(monto2);
+                        Console.WriteLine(resultado2);
+                        utilidades.Pausar("Presione una tecla para continuar.");
+                        break;
+                    case "4":
+                        salir= true;
+                        break;
+                    default:
+                    Console.WriteLine("Opción no valida.");
+                    utilidades.Pausar("Vuelve a seleccionar una opción valida");
+                    break;
+                }
+            }
         }
     }
 }
