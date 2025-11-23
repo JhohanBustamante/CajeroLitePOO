@@ -11,7 +11,9 @@ namespace CajeroLitePOO
     {
         List<Usuario> ListaUsuarios = new List<Usuario>();
         private Utilidades utilidades = new Utilidades();
-        private RegistroUtilidades validaciones = new RegistroUtilidades();
+        private RegistroUtilidades validacionesRegistro = new RegistroUtilidades();
+        private InicioUtilidades validacionesInicio = new InicioUtilidades();
+
 
         public bool ExistenciaNombre(string nombre)
         {
@@ -45,13 +47,14 @@ namespace CajeroLitePOO
 
         public bool IniciarSesion()
         {
-            string pin = "";
-            string nombre = "";
-            int intentosFallidos = 0; 
+            string nombre;
+            string pin;
+            int intentosFallidos = 0;
 
+            nombre = validacionesRegistro.ValidarTexto("Nombre de usuario", 4, 10);
+            pin = validacionesInicio.ValidarPin("pin", 4);
             do
             {
-
                 intentosFallidos++;
                 if (intentosFallidos >=3)
                 {
@@ -59,10 +62,10 @@ namespace CajeroLitePOO
                     return false;
                 }
             }
-            while (ExistenciaUsuario(nombre, pin));
+            while (ExistenciaUsuario(nombre,pin));
 
             return true;
-                   
+        
         }
 
         public bool Registrar()
@@ -71,7 +74,7 @@ namespace CajeroLitePOO
             string pin = "";
             do
             {
-                nombre = validaciones.ValidarTexto("Nombre de usuario", 4, 10);
+                nombre = validacionesRegistro.ValidarTexto("Nombre de usuario", 4, 10);
                 if(!ExistenciaNombre(nombre))
                 {
                     Console.WriteLine("El nombre de usuario ya existe, por favor elige otro.");
@@ -83,7 +86,7 @@ namespace CajeroLitePOO
 
             do
             {
-                pin = validaciones.ValidarPin("Pin", 4);
+                pin = validacionesRegistro.ValidarPin("Pin", 4);
             }
             while (pin == "");
 

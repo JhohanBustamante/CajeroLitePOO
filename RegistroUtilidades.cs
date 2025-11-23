@@ -9,7 +9,7 @@ namespace CajeroLitePOO
     internal class RegistroUtilidades : Utilidades
     {
 
-        public override string ValidarTexto(string variable, int min, int max)
+        public string ValidarTexto(string variable, int min, int max)
         {
             string entrada;
             bool esValido;
@@ -64,6 +64,7 @@ namespace CajeroLitePOO
                 if (entrada != entradaValidacion)
                 {
                     esValido = false;
+                   
                     Console.WriteLine("No coinciden.");
                     Pausar("Oprime alguna tecla para intentar de nuevo...");
                     continue;
