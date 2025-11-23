@@ -32,9 +32,11 @@ namespace CajeroLitePOO
             decimal valor;
 
             Console.Write(mensaje);
-            while(!decimal.TryParse(Console.ReadLine(),out valor))
-            {
-                Console.WriteLine("El valor ingrasado es invalido, por favor intente nuevamente.");
+            while(!decimal.TryParse(Console.ReadLine(),out valor) || valor%1000 != 0)
+            {   
+                Console.Clear();
+                Console.WriteLine("El valor ingrasado es invalido, por favor intente nuevamente: ");
+                Console.WriteLine("--Recuerde tener en cuenta: el valor debe ser divisble por 1000--");
             }
             return valor;
         }

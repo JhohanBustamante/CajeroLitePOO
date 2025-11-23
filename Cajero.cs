@@ -128,7 +128,8 @@ namespace CajeroLitePOO
             bool salir = false;
 
             while (!salir)
-            {
+            {   
+                Console.Clear();
                 Console.WriteLine("----MENU DE OPERACIONES----");
                 Console.WriteLine("1. VER SALDO");
                 Console.WriteLine("2. RETIRAR");
@@ -140,17 +141,17 @@ namespace CajeroLitePOO
                 {
                     case "1":
                         decimal saldo= cuenta.VerSaldo();
-                        Console.WriteLine($"Su saldo actual es de: {saldo}");
+                        Console.WriteLine($"Su saldo actual es de: {saldo}$");
                         utilidades.Pausar("Presione una tecla para continuar.");
                         break;
                     case "2":                        
-                        decimal monto=Utilidades.LeerDecimal("Por favor ingrase el monto a retirar: ");
+                        decimal monto=Utilidades.LeerDecimal("Por favor ingrase el monto a retirar que sea divisible por 1000: ");
                         string resultado=cuenta.Retirar(monto);
                         Console.WriteLine(resultado);
                         utilidades.Pausar("Presione una tecla para continuar.");
                         break;
                     case "3":
-                        decimal monto2=Utilidades.LeerDecimal("Por favor ingrase el monto a depositar: ");
+                        decimal monto2=Utilidades.LeerDecimal("Por favor ingrase el monto a depositar que sea divisible por 1000: ");
                         string resultado2 = cuenta.Depositar(monto2);
                         Console.WriteLine(resultado2);
                         utilidades.Pausar("Presione una tecla para continuar.");
