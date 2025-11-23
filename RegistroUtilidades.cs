@@ -42,35 +42,36 @@ namespace CajeroLitePOO
 
             do
             {
-                entrada = LeerTexto("Ingrese su " + variable + ": ");
-                int.TryParse(entrada, out _);
+                entrada = LeerPrivado("Ingrese su " + variable + ": ");
                 esValido = true;
-                if (entrada.Trim().Length != 4 || entrada.Contains(' '))
+
+                if (entrada.Trim().Length != digitos || entrada.Contains(' '))
                 {
                     esValido = false;
-                    Console.WriteLine(variable + " debe tener " + digitos + " digitos, sin espacios.");
+                    Console.WriteLine($"{variable} debe tener {digitos} dígitos, sin espacios.");
                     Pausar("Oprime alguna tecla para intentar de nuevo...");
                     continue;
                 }
+
                 if (!int.TryParse(entrada, out _))
                 {
                     esValido = false;
-                    Console.WriteLine(variable + " debe tener solo números.");
+                    Console.WriteLine($"{variable} debe tener solo números.");
                     Pausar("Oprime alguna tecla para intentar de nuevo...");
                     continue;
                 }
-                string entradaValidacion = LeerTexto("Ingresa nuevamente su " + variable + ": ");
-                int.TryParse(entradaValidacion, out _);
+
+                string entradaValidacion = LeerPrivado("Ingresa nuevamente su " + variable + ": ");
+
                 if (entrada != entradaValidacion)
                 {
                     esValido = false;
-                   
                     Console.WriteLine("No coinciden.");
                     Pausar("Oprime alguna tecla para intentar de nuevo...");
-                    continue;
                 }
-            }
-            while (!esValido);
+
+            } while (!esValido);
+
             return entrada.Trim();
         }
 

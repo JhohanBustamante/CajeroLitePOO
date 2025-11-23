@@ -17,9 +17,9 @@ namespace CajeroLitePOO
 
             do
             {
-                entrada = LeerTexto("Ingrese su " + variable + ": ");
+                entrada = LeerPrivado("Ingrese su " + variable + ": ");
                 int.TryParse(entrada, out _);
-                if (!(intentosFallidos < 2))
+                if (intentosFallidos >= 2)
                 {
                     Console.WriteLine("Sobrepasaste la cantidad máxima de intentos.");
                     return "";
