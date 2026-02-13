@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CajeroLitePOO", "CajeroLitePOO.csproj", "{7ACCBFE9-74BC-4B5C-A629-0FC380A06DCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "..\TestProject1\TestProject1.csproj", "{157AB49E-9544-42A0-BD5F-CDD3DA85E24A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCajero", "..\TestProject1\TestCajero.csproj", "{157AB49E-9544-42A0-BD5F-CDD3DA85E24A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
