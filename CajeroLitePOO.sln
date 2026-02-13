@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
+VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CajeroLitePOO", "CajeroLitePOO.csproj", "{7ACCBFE9-74BC-4B5C-A629-0FC380A06DCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "..\TestProject1\TestProject1.csproj", "{157AB49E-9544-42A0-BD5F-CDD3DA85E24A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7ACCBFE9-74BC-4B5C-A629-0FC380A06DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ACCBFE9-74BC-4B5C-A629-0FC380A06DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ACCBFE9-74BC-4B5C-A629-0FC380A06DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{157AB49E-9544-42A0-BD5F-CDD3DA85E24A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{157AB49E-9544-42A0-BD5F-CDD3DA85E24A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{157AB49E-9544-42A0-BD5F-CDD3DA85E24A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{157AB49E-9544-42A0-BD5F-CDD3DA85E24A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CajeroLitePOO
 {
-    internal class Cajero
+    public class Cajero
     {
         List<Usuario> ListaUsuarios = new List<Usuario>();
         private Utilidades utilidades = new Utilidades();
@@ -21,10 +21,13 @@ namespace CajeroLitePOO
             int posicion = ListaUsuarios.FindIndex(usuarioGuardado =>
                 usuarioGuardado.GetNombre() == nombre
             );
+
+            if (string.IsNullOrWhiteSpace(nombre))
+                throw new ArgumentException("El nombre no puede ser nulo o vacío.");
+
             if (posicion == -1)
-            {
                 return true;
-            }
+            
             return false;
         }
 
