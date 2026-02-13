@@ -52,11 +52,11 @@ namespace CajeroLite.App
                             Console.WriteLine("Inicio de sesión fallido.");
                             utilidades.Pausar("Intenta nuevamente...");
                         }
-                            break;
+                        break;
 
                     case 3:
                         Console.WriteLine("Gracias por usar el cajero. ¡Hasta luego!");
-                        return; 
+                        return;
 
 
                     default:

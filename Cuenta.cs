@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CajeroLitePOO
 {
-    internal class Cuenta
+    public class Cuenta
     {
         public decimal saldo { get; private set; }
 
@@ -29,7 +29,7 @@ namespace CajeroLitePOO
             }
             else saldo += monto;
             string saldofinal = saldo.ToString();
-            return resultado = "Se pudo hacer el deposito, su cuenta actual es ahora de: " + saldofinal;
+            return resultado = "Se pudo hacer el deposito.";
         }
 
         public string Retirar(decimal monto)
